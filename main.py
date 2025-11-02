@@ -27,8 +27,16 @@ def main():
     print("Convert yo nums jit")
     conv_num = input("what number do you want to convert: ")
     in_base = int(input("what is your number's base? (2-36): "))
-    out_base = int(input("what is your target base? (2-36): "))
-    print("Calculating...")
-    print(from_decimal(to_decimal(conv_num, in_base), out_base))
+    while in_base > 36 or in_base < 2:
+        print("Try Again")
+        in_base = int(input("what is your number's base? (2-36): "))
+        if in_base <= 36 and in_base >= 2:
+            out_base = int(input("what is your target base? (2-36): "))
+            while out_base > 36 or out_base < 2:
+                print("Try Again")
+                out_base = int(input("what is your number's base? (2-36): "))
+                if out_base <= 36 and out_base >= 2:
+                    print("Calculating...")
+                    print(from_decimal(to_decimal(conv_num, in_base), out_base))
 
 main()
