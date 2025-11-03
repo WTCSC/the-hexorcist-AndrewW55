@@ -1,6 +1,15 @@
 dig = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def to_decimal(num_str, og_base):
+    """
+    
+    Input:
+    Your number in any base(2-36), and its base
+
+    Output:
+    The value in base-10
+    
+    """
     global dig
     total_val = 0
     power = 0
@@ -11,6 +20,15 @@ def to_decimal(num_str, og_base):
     return total_val
 
 def from_decimal(dec_num, tar_base):
+    """
+
+    Input:
+    Any base-10 value, and your Target base(2-36)
+
+    Output:
+    The base-10 value converted into your target base
+    
+    """
     global dig
     if dec_num == 0:
         return "0"
@@ -27,16 +45,19 @@ def main():
     print("Convert yo nums jit")
     conv_num = input("what number do you want to convert: ")
     in_base = int(input("what is your number's base? (2-36): "))
+    #check if the input's base is between 2 and 36
     while in_base > 36 or in_base < 2:
         print("Try Again")
         in_base = int(input("what is your number's base? (2-36): "))
         if in_base <= 36 and in_base >= 2:
             out_base = int(input("what is your target base? (2-36): "))
+            #check if the output's base is between 2 and 36
             while out_base > 36 or out_base < 2:
                 print("Try Again")
                 out_base = int(input("what is your number's base? (2-36): "))
                 if out_base <= 36 and out_base >= 2:
                     print("Calculating...")
+                    #return the final output in the new base
                     print(from_decimal(to_decimal(conv_num, in_base), out_base))
 
 main()
